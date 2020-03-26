@@ -44,15 +44,15 @@ function Person(name, age) {
   this.age = age;
   this.stomach = [];
 }
-Person.prototype.eat = function(someFood) {
+Person.prototype.eat = function (someFood) {
   if (this.stomach.length <= 9) {
     this.stomach.push(someFood);
   }
 };
-Person.prototype.poop = function() {
+Person.prototype.poop = function () {
   this.stomach = [];
 };
-Person.prototype.toString = function() {
+Person.prototype.toString = function () {
   return `${this.name}, ${this.age}`;
 };
 
@@ -76,11 +76,11 @@ function Car(model, milesPerGallon) {
   this.tank = 0;
   this.odometer = 0;
 }
-Car.prototype.fill = function(gallons) {
+Car.prototype.fill = function (gallons) {
   this.tank += gallons;
 }
-Car.prototype.drive = function(distance) {
-  
+Car.prototype.drive = function (distance) {
+
   if (this.tank * this.milesPerGallon <= distance) {
     this.odometer += this.tank * this.milesPerGallon;
     this.tank = 0;
@@ -88,7 +88,7 @@ Car.prototype.drive = function(distance) {
   } else {
     this.odometer += distance;
     this.tank -= distance / this.milesPerGallon;
-  } 
+  }
 }
 
 /*
@@ -102,10 +102,10 @@ function Baby(name, age, favoriteToy) {
   Person.call(this);
   this.name = name;
   this.age = age;
-  this.favoriteToy = favoriteToy; 
+  this.favoriteToy = favoriteToy;
 }
 Baby.prototype = Object.create(Person.prototype);
-Baby.prototype.play = function() {
+Baby.prototype.play = function () {
   return `Playing with ${this.favoriteToy}`;
 }
 
@@ -113,10 +113,10 @@ Baby.prototype.play = function() {
   TASK 4
 
   In your own words explain the four principles for the "this" keyword below:
-  1. 
-  2. 
-  3. 
-  4. 
+  1. Global/Window Binding - When in the global scope, 'this' will refer to the Global object.
+  2. Explicit Binding - When a .call, .apply, .bind method is used, 'this' is explicity defined.
+  3. Implicit Binding - Whenever a preceding calls a function, 'this' refers to the object to the left of the dot.
+  4. New Binding - When using a constructor function, 'this' refers to the specific instance of the object that is created and returned by the constructor function.
 */
 
 
@@ -125,8 +125,16 @@ Baby.prototype.play = function() {
 ///////// END OF CHALLENGE /////////
 if (typeof exports !== 'undefined') {
   module.exports = module.exports || {}
-  if (Airplane) { module.exports.Airplane = Airplane }
-  if (Person) { module.exports.Person = Person }
-  if (Car) { module.exports.Car = Car }
-  if (Baby) { module.exports.Baby = Baby }
+  if (Airplane) {
+    module.exports.Airplane = Airplane
+  }
+  if (Person) {
+    module.exports.Person = Person
+  }
+  if (Car) {
+    module.exports.Car = Car
+  }
+  if (Baby) {
+    module.exports.Baby = Baby
+  }
 }
